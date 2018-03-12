@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">LearnAndroid</string>
+    <string name="text">An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+        An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+        An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+        An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+        An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+        An intent is an abstract description of an operation to be performed.
+        It can be used with startActivity to launch an Activity, broadcastIntent  to send it to
+        any interested BroadcastReceiver components, and startService(Intent) or
+        bindService(Intent, ServiceConnection, int) to communicate with a background Service
+
+
+    </string>
+</resources>
