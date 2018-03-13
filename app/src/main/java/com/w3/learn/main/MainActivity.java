@@ -3,8 +3,6 @@ package com.w3.learn.main;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,16 +12,15 @@ import android.widget.ImageView;
 
 import com.w3.learn.R;
 import com.w3.learn.base.BaseActivity;
-import com.w3.learn.main.MainMvpView;
-import com.w3.learn.main.MainPresenter;
-import com.w3.learn.main.ShowImageFullScreen;
 
 import java.io.File;
 import java.util.ArrayList;
 
+import com.w3.learn.image.ShowImageFullScreen;
+
 public class MainActivity extends BaseActivity<MainMvpView, MainPresenter> implements MainMvpView, View.OnClickListener, AdapterView.OnItemClickListener {
-    GridView gv;
-    ArrayList<File> list;
+    GridView galleryGridView;
+    ArrayList<File> storageImageFileList;
 
     @Override
     protected int getLayoutId() {
@@ -32,10 +29,10 @@ public class MainActivity extends BaseActivity<MainMvpView, MainPresenter> imple
 
     @Override
     protected void startUI() {
-        list = presenter.imageReader(Environment.getExternalStorageDirectory() );
-        gv = findViewById(R.id.imageGridView);
-        gv.setAdapter(new GridAdapter());
-        gv.setOnItemClickListener(this);
+        storageImageFileList = presenter.imageReader(Environment.getExternalStorageDirectory() );
+        galleryGridView = findViewById(R.id.imageGridView);
+        galleryGridView.setAdapter(new GridAdapter());
+        galleryGridView.setOnItemClickListener(this);
     }
 
     @Override
@@ -56,7 +53,7 @@ public class MainActivity extends BaseActivity<MainMvpView, MainPresenter> imple
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        startActivity(new Intent(getApplicationContext(), ShowImageFullScreen.class).putExtra("img", list.get(position)));
+        startActivity(new Intent(getApplicationContext(), ShowImageFullScreen.class).putExtra("img", storageImageFileList.get(position)));
     }
 
     @Override
@@ -68,12 +65,12 @@ public class MainActivity extends BaseActivity<MainMvpView, MainPresenter> imple
 
         @Override
         public int getCount() {
-            return list.size();
+            return storageImageFileList.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return list.get(position);
+            return storageImageFileList.get(position);
         }
 
         @Override
@@ -84,8 +81,8 @@ public class MainActivity extends BaseActivity<MainMvpView, MainPresenter> imple
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            convertView = getLayoutInflater().inflate(R.layout.single_grid, parent, false);
-            ImageView iv = convertView.findViewById(R.id.imageView);
+            convertView = getLayoutInflater().inflate(R.layout.single_grid_item, parent, false);
+            ImageView iv = convertView.findViewById(R.id.singleImageGridItem);
 
             iv.setImageURI(Uri.parse(getItem(position).toString() ));
 

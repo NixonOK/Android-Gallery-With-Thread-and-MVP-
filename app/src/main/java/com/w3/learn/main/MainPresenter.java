@@ -20,30 +20,33 @@ import java.util.ArrayList;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
-    public void showMessage(){
+    // reads all the existing files in root
+    public ArrayList<File> imageReader(final File root){
+
+        final ArrayList<File> imageFileList = new ArrayList<>();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getMvpView().showMessage("From Presenter");
+
+                File[] imageFiles= root.listFiles();
+                if(imageFiles != null){
+                    for(int i=0; i<imageFiles.length; i++){
+                        if(imageFiles[i].isDirectory()){
+                            imageFileList.addAll(imageReader(imageFiles[i]));
+                        }
+                        else {
+                            if( imageFiles[i].getName().endsWith(".jpg") || imageFiles[i].getName().endsWith(".png") ){
+                                imageFileList.add( imageFiles[i] );
+                            }
+                        }
+                    }
+                }
+
             }
         }).start();
-    }
 
-    // reads all the existing files in root
-    public ArrayList<File> imageReader(File root){
 
-        ArrayList<File> a = new ArrayList<>();
-        File[] files= root.listFiles();
-        for(int i=0; i<files.length; i++){
-            if(files[i].isDirectory()){
-                a.addAll(imageReader(files[i]));
-            }
-            else {
-                if( files[i].getName().endsWith(".jpg") ){
-                    a.add( files[i] );
-                }
-            }
-        }
-        return  a;
+        return  imageFileList;
     }
 }

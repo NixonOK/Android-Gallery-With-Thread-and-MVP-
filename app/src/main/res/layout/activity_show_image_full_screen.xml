@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.w3.learn.main.ShowImageFullScreen">
+    tools:context="com.w3.learn.image.ShowImageFullScreen">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fullScreenImageShow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="186dp"
